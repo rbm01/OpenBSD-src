@@ -28,6 +28,9 @@ Report problems and direct all questions to:
 
 /*
  * $Log: not supported by cvs2svn $
+ * Revision 1.1.1.1  1995/10/18 08:41:03  deraadt
+ * initial import of NetBSD tree
+ *
  * Revision 1.3  1995/02/24 02:25:24  mycroft
  * RCS 5.6.7.4
  *
@@ -267,10 +270,10 @@ static struct delrevpair delrev;
 static struct hshentry *cuthead, *cuttail, *delstrt;
 static struct hshentries *gendeltas;
 
-mainProg(rcsId, "rcs", "$Id: rcs.c,v 1.1.1.1 1995/10/18 08:41:03 deraadt Exp $")
+mainProg(rcsId, "rcs", "$Id: rcs.c,v 1.2 1996/05/07 12:03:21 mickey Exp $")
 {
 	static char const cmdusage[] =
-		"\nrcs usage: rcs -{ae}logins -Afile -{blu}[rev] -cstring -{iILqTU} -ksubst -mrev:msg -{nN}name[:[rev]] -orange -sstate[:rev] -t[text] -Vn -xsuff -zzone file ...";
+		"\nrcs usage: rcs -{ae}logins -Afile -{blu}[rev] -cstring -{iILqTU} -ksubst -mrev:msg -{nN}name[:[rev]] -orange -sstate[:rev] -t[text] -Vn -xsuff -zzone -ZlocalId file ...";
 
 	char *a, **newargv, *textfile;
 	char const *branchsym, *commsyml;
@@ -460,6 +463,10 @@ mainProg(rcsId, "rcs", "$Id: rcs.c,v 1.1.1.1 1995/10/18 08:41:03 deraadt Exp $")
 
 		case 'z':
 			zone_set(a);
+			break;
+
+		case 'Z':
+			setRCSlocalId(a);
 			break;
 
 		case 'k':    /*  set keyword expand mode  */
