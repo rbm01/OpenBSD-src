@@ -1,3 +1,4 @@
+/*	$OpenBSD: main.c,v 1.2 1996/03/04 10:37:09 mickey Exp $	*/
 /*	$NetBSD: main.c,v 1.5 1994/06/29 06:41:07 cgd Exp $	*/
 
 /*
@@ -105,7 +106,7 @@ register char *proto;
 	DOIT(statefile);
 	DOIT(actfile);
 	fprintf(actfile,
-		"#ifndef lint\nstatic char *rcsid = \"$Header: /home/cvs/src/sys/netiso/xebec/Attic/main.c,v 1.1.1.1 1995/10/18 08:53:18 deraadt Exp $\";\n#endif lint\n");
+		"#ifndef lint\nstatic char *rcsid = \"$Header: /home/cvs/src/sys/netiso/xebec/Attic/main.c,v 1.2 1996/03/04 10:37:09 mickey Exp $\";\n#endif lint\n");
 
 	if(pgoption)
 		putdriver(actfile, 15);
