@@ -1,4 +1,4 @@
-/*	$OpenBSD: wss_isapnp.c,v 1.5 1999/07/19 19:47:05 deraadt Exp $	*/ 
+/*	$OpenBSD: wss_isapnp.c,v 1.6 2002/03/14 01:26:57 millert Exp $	*/ 
 /*	$NetBSD: wss_isapnp.c,v 1.5 1998/11/25 22:17:07 augustss Exp $	*/
 
 /*
@@ -61,8 +61,8 @@
 #include <dev/isa/wssreg.h>
 #include <dev/isa/wssvar.h>
 
-int	wss_isapnp_match __P((struct device *, void *, void *));
-void	wss_isapnp_attach __P((struct device *, struct device *, void *));
+int	wss_isapnp_match(struct device *, void *, void *);
+void	wss_isapnp_attach(struct device *, struct device *, void *);
 
 struct cfattach wss_isapnp_ca = {
 	sizeof(struct wss_softc), wss_isapnp_match, wss_isapnp_attach
