@@ -5,7 +5,7 @@
 # based on original version by Alan R. Martello <al@ee.pitt.edu>
 # And by A.Macpherson@bnr.co.uk for multi-homed hosts
 #
-# $Header: /home/cvs/src/gnu/usr.bin/perl/lib/Attic/ftp.pl,v 1.2 1997/11/30 07:56:58 millert Exp $
+# $Header: /home/cvs/src/gnu/usr.bin/perl/lib/Attic/ftp.pl,v 1.3 1999/04/29 22:51:46 millert Exp $
 # $Log: not supported by cvs2svn $
 # Revision 1.17  1993/04/21  10:06:54  lmjm
 # Send all status reports to STDERR not to STDOUT (to allow use by ftpcat).
