@@ -5,7 +5,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(&soundex $soundex_nocode);
 
-# $Id: Soundex.pm,v 1.1.1.1 1996/08/19 10:12:51 downsj Exp $
+# $Id: Soundex.pm,v 1.2 1997/11/30 07:58:05 millert Exp $
 #
 # Implementation of soundex algorithm as described by Knuth in volume
 # 3 of The Art of Computer Programming, with ideas stolen from Ian
@@ -48,7 +48,7 @@ sub soundex
 
   foreach (@s)
   {
-    tr/a-z/A-Z/;
+    $_ = uc $_;
     tr/A-Z//cd;
 
     if ($_ eq '')
