@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 1996 Nivas Madhur
  * Copyright (c) 1992, 1993
  *	The Regents of the University of California.  All rights reserved.
  *
@@ -31,7 +32,7 @@
  * SUCH DAMAGE.
  *
  *	from: @(#)profile.h	8.1 (Berkeley) 6/11/93
- *	$Id: profile.h,v 1.1.1.1 1995/10/18 10:54:24 deraadt Exp $
+ *	$Id: profile.h,v 1.1.1.2 1997/03/03 19:31:44 rahnds Exp $
  */
 
 #define	_MCOUNT_DECL static inline void _mcount
@@ -41,14 +42,15 @@ extern void mcount() asm("mcount");					\
 void									\
 mcount()								\
 {									\
-	register int selfret, callerret;				\
+	int selfret;							\
+	register int callerret;						\
 	/*								\
 	 * find the return address for mcount,				\
 	 * and the return address for mcount's caller.			\
 	 *								\
 	 * selfret = ret pushed by mcount call				\
 	 */								\
-	asm volatile("ld %0,r31,36" : "=r" (selfret));			\
+	asm volatile("st r1,%0" : "=m" (selfret));			\
 	/*								\
 	 * callerret = ret pushed by call into self.			\
 	 */								\
