@@ -28,6 +28,10 @@ Report problems and direct all questions to:
 
 /*
  * $Log: not supported by cvs2svn $
+ * Revision 1.2  1996/05/07 12:03:44  mickey
+ * change -L option name to -Z, note that in
+ * co(1) manual, add -Z where were missed.
+ *
  * Revision 1.1.1.1  1995/10/18 08:41:04  deraadt
  * initial import of NetBSD tree
  *
@@ -215,7 +219,7 @@ static struct lockers *lockerlist;
 static struct stateattri *statelist;
 
 
-mainProg(rlogId, "rlog", "$Id: rlog.c,v 1.2 1996/05/07 12:03:44 mickey Exp $")
+mainProg(rlogId, "rlog", "$Id: rlog.c,v 1.3 1996/05/31 13:11:11 deraadt Exp $")
 {
 	static char const cmdusage[] =
 		"\nrlog usage: rlog -{bhLNRt} -ddates -l[lockers] -r[revs] -sstates -Vn -w[logins] -xsuff -zzone -ZlocalId file ...";
@@ -312,11 +316,6 @@ mainProg(rlogId, "rlog", "$Id: rlog.c,v 1.2 1996/05/07 12:03:44 mickey Exp $")
 
 		case 'V':
 			setRCSversion(*argv);
-			break;
-
-		case 'Z':
-			/* add local Id keyword */
-			setRCSlocalId(a);
 			break;
 
                 default:
