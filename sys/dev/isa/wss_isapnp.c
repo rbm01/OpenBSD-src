@@ -1,4 +1,4 @@
-/*	$OpenBSD: wss_isapnp.c,v 1.4 1999/03/08 11:05:22 deraadt Exp $	*/ 
+/*	$OpenBSD: wss_isapnp.c,v 1.5 1999/07/19 19:47:05 deraadt Exp $	*/ 
 /*	$NetBSD: wss_isapnp.c,v 1.5 1998/11/25 22:17:07 augustss Exp $	*/
 
 /*
@@ -99,8 +99,7 @@ wss_isapnp_attach(parent, self, aux)
 	struct isa_attach_args *ipa = aux;
 
 	/* probably broken */
-	if (bus_space_read_1(ipa->ia_iot, ipa->ipa_io[0].h, 0x0) == 0x01)
-		isapnp_write_reg(pnp, ISAPNP_CONFIG_CONTROL, 0x02);
+	isapnp_write_reg(pnp, ISAPNP_CONFIG_CONTROL, 0x02);
 
 	sc->sc_iot = ipa->ia_iot;
 	sc->sc_ioh = ipa->ipa_io[0].h;
