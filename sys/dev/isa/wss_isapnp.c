@@ -1,4 +1,4 @@
-/*	$OpenBSD: wss_isapnp.c,v 1.2 1999/03/04 22:14:36 deraadt Exp $	*/ 
+/*	$OpenBSD: wss_isapnp.c,v 1.3 1999/03/08 04:15:42 deraadt Exp $	*/ 
 /*	$NetBSD: wss_isapnp.c,v 1.5 1998/11/25 22:17:07 augustss Exp $	*/
 
 /*
@@ -117,17 +117,17 @@ wss_isapnp_attach(parent, self, aux)
 
 	sc->sc_ic  = ipa->ia_ic;
 	sc->wss_irq = ipa->ipa_irq[0].num;
-	sc->wss_drq = ipa->ipa_drq[0].num; /* I DONT NEED TO DO THIS */
-	sc->wss_recdrq = ipa->ipa_drq[1].num;
-	/* ipa->ipa_ndrq > 1 ? ipa->ipa_drq[1].num : ipa->ipa_drq[0].num; */
+	sc->wss_drq = ipa->ipa_drq[0].num;
+	sc->wss_recdrq = ipa->ipa_ndrq > 1 ? ipa->ipa_drq[1].num :
+	    ipa->ipa_drq[0].num;
 
-	if(ad1848_probe(&sc->sc_ad1848)==0) {
-		printf("%s: probe failed\n",ac->sc_dev.dv_xname);
+	if (ad1848_probe(&sc->sc_ad1848)==0) {
+		printf("%s: probe failed\n", ac->sc_dev.dv_xname);
 		return;
 	}
 
 	printf("%s: %s %s", ac->sc_dev.dv_xname, ipa->ipa_devident,
-		ipa->ipa_devclass);
+	    ipa->ipa_devclass);
 
 	wssattach(sc);
 }
