@@ -7,7 +7,7 @@ require Exporter;
 
 $VERSION = '1.01';
 
-# $Id: Soundex.pm,v 1.6 2002/10/27 22:25:27 millert Exp $
+# $Id: Soundex.pm,v 1.7 2003/12/03 03:02:41 millert Exp $
 #
 # Implementation of soundex algorithm as described by Knuth in volume
 # 3 of The Art of Computer Programming, with ideas stolen from Ian
