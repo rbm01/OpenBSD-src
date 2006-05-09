@@ -1,4 +1,4 @@
-/*	$OpenBSD: bios.c,v 1.61 2006/05/09 00:35:29 gwk Exp $	*/
+/*	$OpenBSD: bios.c,v 1.62 2006/05/08 21:13:03 gwk Exp $	*/
 
 /*
  * Copyright (c) 1997-2001 Michael Shalayeff
@@ -676,7 +676,6 @@ smbios_find_table(u_int8_t type, struct smbtable *st)
 		va+=2;
 	}
 
-	printf("\n");
 	return ret;
 }
 
