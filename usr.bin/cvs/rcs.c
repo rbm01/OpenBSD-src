@@ -1,4 +1,4 @@
-/*	$OpenBSD: rcs.c,v 1.233 2008/01/10 09:35:02 tobias Exp $	*/
+/*	$OpenBSD: rcs.c,v 1.234 2008/01/10 09:37:26 tobias Exp $	*/
 /*
  * Copyright (c) 2004 Jean-Francois Brousseau <jfb@openbsd.org>
  * All rights reserved.
@@ -542,6 +542,9 @@ rcs_head_get(RCSFILE *file)
 	struct rcs_branch *brp;
 	struct rcs_delta *rdp;
 	RCSNUM *rev, *rootrev;
+
+	if (file->rf_head == NULL)
+		return NULL;
 
 	rev = rcsnum_alloc();
 	if (file->rf_branch != NULL) {
@@ -3296,7 +3299,12 @@ rcs_kwexp_line(char *rcsfile, struct rcs_delta *rdp, struct cvs_lines *lines,
 				char *logp, *l_line, *prefix, *q, *sprefix;
 				size_t i;
 
-				/* $Log: not supported by cvs2svn $ line */
+				/* $Log: not supported by cvs2svn $
+				/* Revision 1.233  2008/01/10 09:35:02  tobias
+				/* Added support for keyword $Log: not supported by cvs2svn $.  In order to support $Log: not supported by cvs2svn $, new lines have
+				/* to be added which mustn't be expanded again (this log message for example
+				/* would loop forever due to $Log: not supported by cvs2svn $ keywords in it).
+				/* line */
 				if (!(kwtype & RCS_KW_FULLPATH))
 					(void)strlcat(expbuf,
 					    basename(rcsfile), sizeof(expbuf));
@@ -3380,7 +3388,12 @@ rcs_kwexp_line(char *rcsfile, struct rcs_delta *rdp, struct cvs_lines *lines,
 
 				/*
 				 * This is just another hairy mess, but it must
-				 * be done: All characters behind $Log: not supported by cvs2svn $ will be
+				 * be done: All characters behind $Log: not supported by cvs2svn $
+				 * be done: All characters behind Revision 1.233  2008/01/10 09:35:02  tobias
+				 * be done: All characters behind Added support for keyword $Log: not supported by cvs2svn $.  In order to support $Log: not supported by cvs2svn $, new lines have
+				 * be done: All characters behind to be added which mustn't be expanded again (this log message for example
+				 * be done: All characters behind would loop forever due to $Log: not supported by cvs2svn $ keywords in it).
+				 * be done: All characters behind will be
 				 * written in a new line next to log messages.
 				 * But that's not enough, we have to strip all
 				 * trailing whitespaces of our prefix.
