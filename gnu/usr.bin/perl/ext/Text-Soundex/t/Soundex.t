@@ -1,6 +1,6 @@
 #!./perl
 #
-# $Id: Soundex.t,v 1.1.1.1 2009/10/12 18:11:11 millert Exp $
+# $Id: Soundex.t,v 1.2 2009/10/12 18:24:35 millert Exp $
 #
 # test module for soundex.pl
 #
